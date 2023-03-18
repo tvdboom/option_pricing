@@ -1,0 +1,9 @@
+fastapi
+numba
+numpy
+pytest
+pytest-asyncio
+python-dateutil
+requests
+scipy
+uvicorn[standard]
