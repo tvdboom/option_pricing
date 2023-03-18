@@ -4,6 +4,7 @@ from datetime import datetime
 
 import requests
 
+
 localhost = " http://127.0.0.1:8000"
 
 # 1. Upload data to market

@@ -10,7 +10,7 @@ from option_pricing.market import Market
 from option_pricing.utils import MarketData
 
 
-def create_market_data(n, asset=None):
+def create_market_data(n: int, asset: bool = None) -> list[MarketData]:
     """Create dummy data for the market table.
 
     Parameters
@@ -23,7 +23,7 @@ def create_market_data(n, asset=None):
 
     Returns
     -------
-    list
+    list of MarketData
         Rows of timestamp, asset name and price.
 
     """
@@ -31,7 +31,7 @@ def create_market_data(n, asset=None):
     for _ in range(n):
         timestamp = str(datetime.now() - timedelta(minutes=random.randint(0, 1440)))
         name = asset or "".join(random.choices(string.ascii_lowercase, k=8))
-        price = random.randint(0, 1e12)
+        price = random.randint(1, 200)
         data.append(MarketData(timestamp=timestamp, asset=name, price=price))
 
     return data
