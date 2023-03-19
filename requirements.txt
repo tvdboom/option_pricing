@@ -1,6 +1,7 @@
 fastapi
 numba
 numpy
+pandas
 pytest
 pytest-asyncio
 python-dateutil

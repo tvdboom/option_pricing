@@ -15,6 +15,7 @@ class Option:
     """Properties for a single option."""
 
     pattern = "([A-Z]+?) ([a-zA-Z]{3}\d{2}) (Call|Put) Strike (\d+?) (.+)"
+    delivery_to_maturity = dict(BRN=2, HH=1)
 
     def __init__(self, data: str):
         # Parse option
@@ -41,7 +42,7 @@ class Option:
         """
         # Extract maturity month and year from delivery date
         t = datetime.strptime(f"{self.delivery_date}{date.today().year}", "%b%d%Y")
-        t = t - relativedelta(months=2 if self.asset == "BRN" else 1)
+        t = t - relativedelta(months=self.delivery_to_maturity.get(self.asset, 1))
 
         # Assumption: All options have a maturity_date > today
         if t < datetime.now():
